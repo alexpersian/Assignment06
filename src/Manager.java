@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public class Manager {
     // Create an array of student/grad student objects + counters
 
-    private ArrayList<Student> stuObjects = new ArrayList<Student>();
-    private ArrayList<GradStudent> grdObjects = new ArrayList<GradStudent>();
+    ArrayList<Student> stuObjects = new ArrayList<Student>();
+    ArrayList<GradStudent> grdObjects = new ArrayList<GradStudent>();
 
 //    private Student[] stuObjects = new Student[50];
 //    private GradStudent[] grdObjects = new GradStudent[50];
@@ -115,8 +115,10 @@ public class Manager {
         try {
             FileOutputStream fos = new FileOutputStream(new File("data.dat"));
             ObjectOutputStream oos = new ObjectOutputStream(fos);
+
             oos.writeObject(stuObjects);
             oos.writeObject(grdObjects);
+
             oos.close();
             fos.close();
         } catch (IOException i) {
@@ -128,12 +130,13 @@ public class Manager {
         try {
             FileInputStream fis = new FileInputStream("data.dat");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            Object obj = ois.readObject();
-            Object obj1 = ois.readObject();
-            ArrayList<Student> list = (ArrayList<Student>) obj;
-            ArrayList<GradStudent> list1 = (ArrayList<GradStudent>) obj1;
-            stuObjects = list;
-            grdObjects = list1;
+
+            Object objS = ois.readObject();
+            ArrayList<Student> stuObjects = (ArrayList<Student>) objS;
+
+            Object objG = ois.readObject();
+            ArrayList<GradStudent> grdObjects = (ArrayList<GradStudent>) objG;
+
             ois.close();
             fis.close();
         } catch (IOException i) {
