@@ -5,7 +5,9 @@
  * Person
  */
 
-public abstract class Person {
+import java.io.Serializable;
+
+public abstract class Person implements Serializable {
     // Abstract data fields and methods for Student/GradStudent
     protected String name;
     protected int year;
