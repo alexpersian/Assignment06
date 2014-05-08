@@ -132,10 +132,10 @@ public class Manager {
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             Object objS = ois.readObject();
-            ArrayList<Student> stuObjects = (ArrayList<Student>) objS;
+            stuObjects = (ArrayList<Student>) objS;
 
             Object objG = ois.readObject();
-            ArrayList<GradStudent> grdObjects = (ArrayList<GradStudent>) objG;
+            grdObjects = (ArrayList<GradStudent>) objG;
 
             ois.close();
             fis.close();
